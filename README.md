@@ -6,6 +6,9 @@ quick emulator for Mac Intel Based
 brew install qemu
 qemu-system-x86_64 --version
 ```
+# for Mac M1 or M2 use 
+`qemu-system-arm -version` 
+
 # Step#2 Create a virtual disk for a VM
 ```
 cd ~ && mkdir -p ~/qemu && cd ~/qemu
@@ -42,6 +45,22 @@ qemu-system-x86_64 \
   -cpu host \
   -machine type=q35,accel=hvf
 ```
+# For Ubuntu Linux
+```
+qemu-system-x86_64 \
+  -m 2G \
+  -vga virtio \
+  -display default,show-cursor=on \
+  -usb \
+  -device usb-tablet \
+  -machine type=q35,accel=hvf \
+  -smp 2 \
+  -cdrom ubuntu-20.04.6-live-server-amd64.iso \
+  -drive file=ubuntu20-04.qcow2,if=virtio \
+  -cpu host \
+  -machine type=q35,accel=hvf
+```
+
 # then make it executeable
 ```
 chmod +x rocky9-start.sh`

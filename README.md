@@ -57,8 +57,7 @@ qemu-system-x86_64 \
   -smp 2 \
   -cdrom ubuntu-20.04.6-live-server-amd64.iso \
   -drive file=ubuntu20-04.qcow2,if=virtio \
-  -cpu host \
-  -machine type=q35,accel=hvf
+  -cpu host 
 ```
 
 # then make it executeable

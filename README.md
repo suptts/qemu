@@ -81,3 +81,57 @@ chmod +x rocky9-start.sh`
 ./rocky9-start.sh
 ```
 # Note: Use Command +F to use full screen
+
+
+# Run Ubuntu on Mac using QEMU 8.1
+## Creat Disk
+```
+qemu-img create -f raw  ~/qemu/ubuntu-latest.raw 40G
+or
+qemu-img create -f qcow2 rocky-9.qcow2 15G
+```
+## Install Ubuntu Server
+
+```
+qemu-system-aarch64 \
+   -monitor stdio \
+   -M virt,highmem=off \
+   -accel hvf \
+   -cpu host \
+   -smp 4 \
+   -m 3000 \
+   -bios QEMU_EFI.fd \
+   -device virtio-gpu-pci \
+   -display default,show-cursor=on \
+   -device qemu-xhci \
+   -device usb-kbd \
+   -device usb-tablet \
+   -device intel-hda \
+   -device hda-duplex \
+   -drive file=ubuntu-latest.raw,format=raw,if=virtio,cache=writethrough \
+   -cdrom ubuntu-22.04.1-live-server-arm64.iso
+```
+
+## Start Ubuntu using QEMU
+```
+
+
+
+qemu-system-aarch64 \
+   -monitor stdio \
+   -M virt,highmem=off \
+   -accel hvf \
+   -cpu host \
+   -smp 4 \
+   -m 3000 \
+   -bios QEMU_EFI.fd \
+   -device virtio-gpu-pci \
+   -display default,show-cursor=on \
+   -device qemu-xhci \
+   -device usb-kbd \
+   -device usb-tablet \
+   -device intel-hda \
+   -device hda-duplex \
+   -drive file=ubuntu-latest.raw,format=raw,if=virtio,cache=writethrough
+```
+

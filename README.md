@@ -39,7 +39,8 @@ qemu-system-x86_64 \
   -smp 2 \
   -cdrom Rocky-9.2-x86_64-minimal.iso \
   -drive file=rocky-9.qcow2,if=virtio \
-  -cpu host
+  -cpu host \
+  -machine type=q35,accel=hvf
 ```
 # then make it executeable
 ```

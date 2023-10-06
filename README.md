@@ -45,6 +45,7 @@ qemu-system-x86_64 \
   -cpu host \
   -machine type=q35,accel=hvf
 ```
+
 # For Ubuntu Linux
 ```
 qemu-system-x86_64 \
@@ -58,6 +59,20 @@ qemu-system-x86_64 \
   -cdrom ubuntu-20.04.6-live-server-amd64.iso \
   -drive file=ubuntu20-04.qcow2,if=virtio \
   -cpu host 
+```
+For Mac M2
+```
+qemu-system-arm \
+  -m 2G \
+  -vga cirrus \
+  -display default,show-cursor=on \
+  -usb \
+  -device usb-tablet \
+  -machine type=virt,accel=hvf \
+  -smp 2 \
+  -cdrom ubuntu-20.04.6-live-server-amd64.iso \
+  -drive file=ubuntu20-04.qcow2,if=virtio \
+  -cpu host
 ```
 
 # then make it executeable
